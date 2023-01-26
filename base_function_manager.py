@@ -7,9 +7,9 @@ class BaseFunctionManager:
     e: list[Callable[[float], float]]
     e_diff: list[Callable[[float], float]]
 
-    def __init__(self, n):
+    def __init__(self, n: int, interval_of_integration_length: float):
         self.n = n
-        self.h = 2/n
+        self.h = interval_of_integration_length/n
         self.e = [self.create_base_function(i) for i in range(n + 1)]
         self.e_diff = [self.create_base_function_derivative(i) for i in range(n + 1)]
 

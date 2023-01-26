@@ -1,7 +1,12 @@
-import numpy as np
 import matplotlib.pyplot as plt
 from ast import literal_eval
-from abstract_solver import Solver
+from acoustic_vibrations_solver import AcousticVibrationsSolver
+from heat_equation_solver import HeatEquationSolver
+from abstract_solver import AbstractSolver
+
+
+def plot_solution(solver: AbstractSolver, color: str) -> None:
+    plt.plot(solver.linspace(), solver.solve(), color=color)
 
 
 if __name__ == "__main__":
@@ -17,6 +22,10 @@ if __name__ == "__main__":
             continue
         break
 
-    solver = Solver(n)
-    plt.plot(np.linspace(0, 2, solver.n + 1), solver.solve(), color="darkgreen")
+    acoustic_vibrations_solver = AcousticVibrationsSolver(n)
+    heat_equation_solver = HeatEquationSolver(n)
+
+    # plot_solution(acoustic_vibrations_solver, "darkgreen")
+    plot_solution(heat_equation_solver, "orange")
+
     plt.show()
